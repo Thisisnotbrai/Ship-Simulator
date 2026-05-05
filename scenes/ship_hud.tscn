@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://b3yfn7cu0yfth"]
+
+[ext_resource type="Script" uid="uid://p83hjsejfcvo" path="res://scripts/ship_hud.gd" id="1_28bpo"]
+[ext_resource type="Texture2D" uid="uid://cfrvtufcw5tsy" path="res://assets/image-removebg-preview.png" id="2_eales"]
+[ext_resource type="Script" uid="uid://badlibxodgal6" path="res://scripts/steering_wheel.gd" id="3_eales"]
+
+[node name="shipHUD" type="CanvasLayer" unique_id=1407049327]
+script = ExtResource("1_28bpo")
+
+[node name="rootUI" type="Control" parent="." unique_id=218948327]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomPanel" type="Control" parent="rootUI" unique_id=670474850]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SteeringWheel" type="TextureRect" parent="rootUI/BottomPanel" unique_id=497099232]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -153.0
+offset_top = -307.0
+offset_right = 250.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(100, 100)
+mouse_filter = 0
+texture = ExtResource("2_eales")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("3_eales")

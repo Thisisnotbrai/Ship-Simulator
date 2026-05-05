@@ -1,0 +1,87 @@
+[gd_scene format=3 uid="uid://cybstcl588drn"]
+
+[ext_resource type="Texture2D" uid="uid://detujfpcn3qpb" path="res://models/citrus_orchard_puresky_4k.exr" id="1_ewrsg"]
+[ext_resource type="Script" uid="uid://c2lylpa1dbr4m" path="res://scripts/world_environment.gd" id="2_4pb3l"]
+[ext_resource type="PackedScene" uid="uid://dg41kwhupecma" path="res://scenes/boat_scene.tscn" id="3_fiwy5"]
+[ext_resource type="PackedScene" uid="uid://ignpdv10rx52" path="res://addons/boujie_water_shader/prefabs/deep_ocean.tscn" id="4_a35vf"]
+[ext_resource type="PackedScene" uid="uid://b68dmhep1w8pi" path="res://scenes/GameOver.tscn" id="6_xgdjl"]
+[ext_resource type="PackedScene" uid="uid://qe55vwty51fq" path="res://scenes/shark.tscn" id="9_htah3"]
+[ext_resource type="Script" uid="uid://s08y5r6jy6ad" path="res://scripts/hud2.gd" id="10_4bf1b"]
+[ext_resource type="AudioStream" uid="uid://bk101li6i2k8a" path="res://ocean-waves.mp3" id="10_a35vf"]
+[ext_resource type="Texture2D" uid="uid://cu5rwfk7wgtgi" path="res://assets/mockup2.png" id="11_4bf1b"]
+[ext_resource type="Texture2D" uid="uid://cfrvtufcw5tsy" path="res://assets/image-removebg-preview.png" id="12_4bf1b"]
+[ext_resource type="Script" uid="uid://badlibxodgal6" path="res://scripts/steering_wheel.gd" id="13_feeo5"]
+[ext_resource type="Script" uid="uid://chauymm0vjn6s" path="res://scripts/radar.gd" id="14_feeo5"]
+[ext_resource type="PackedScene" uid="uid://0os82hh0jh8b" path="res://scenes/terrain_3d.tscn" id="14_uvc0e"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fiwy5"]
+panorama = ExtResource("1_ewrsg")
+energy_multiplier = 0.2
+
+[sub_resource type="Sky" id="Sky_xgdjl"]
+sky_material = SubResource("PanoramaSkyMaterial_fiwy5")
+
+[sub_resource type="Environment" id="Environment_5exq1"]
+background_mode = 2
+sky = SubResource("Sky_xgdjl")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="water-scene" type="Node3D" unique_id=440738155]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=373056795]
+environment = SubResource("Environment_5exq1")
+script = ExtResource("2_4pb3l")
+
+[node name="boat" parent="." unique_id=553192832 node_paths=PackedStringArray("hull_points") instance=ExtResource("3_fiwy5")]
+transform = Transform3D(0.96554524, 0, 0.26023483, 0, 1, 0, -0.26023483, 0, 0.96554524, 0, 11.057, -777.76636)
+hull_points = []
+
+[node name="DeepOcean" parent="." unique_id=481799275 instance=ExtResource("4_a35vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+far_edge = 4000
+
+[node name="GameOverUI" parent="." unique_id=748037373 instance=ExtResource("6_xgdjl")]
+visible = false
+
+[node name="shark" parent="." unique_id=2004445884 instance=ExtResource("9_htah3")]
+transform = Transform3D(0.12181747, 0, -0.99255234, 0, 1, 0, 0.99255234, 0, 0.12181747, -61.970814, 9.541, 692.48083)
+
+[node name="shark2" parent="." unique_id=197264567 instance=ExtResource("9_htah3")]
+transform = Transform3D(0.12181747, 0, -0.99255234, 0, 1, 0, 0.99255234, 0, 0.12181747, -413.11752, 9.541, 589.61505)
+
+[node name="shark3" parent="." unique_id=2081061763 instance=ExtResource("9_htah3")]
+transform = Transform3D(0.12181747, 0, -0.99255234, 0, 1, 0, 0.99255234, 0, 0.12181747, 182.73122, 9.541, 692.48083)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=960101786]
+stream = ExtResource("10_a35vf")
+autoplay = true
+
+[node name="hud" type="CanvasLayer" parent="." unique_id=1587093151]
+script = ExtResource("10_4bf1b")
+
+[node name="hud" type="TextureRect" parent="hud" unique_id=1837338014]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_4bf1b")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="SteeringWheel" type="TextureRect" parent="hud" unique_id=1805750921]
+offset_left = 448.0
+offset_top = 635.0
+offset_right = 777.0
+offset_bottom = 991.0
+texture = ExtResource("12_4bf1b")
+expand_mode = 1
+stretch_mode = 3
+script = ExtResource("13_feeo5")
+
+[node name="Radar" type="Node2D" parent="hud" unique_id=965295673]
+position = Vector2(276, 613)
+script = ExtResource("14_feeo5")
+
+[node name="Terrain3D" parent="." unique_id=1063886783 instance=ExtResource("14_uvc0e")]

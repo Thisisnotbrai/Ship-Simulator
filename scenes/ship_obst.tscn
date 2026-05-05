@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://b1hmwxhxquqa3"]
+
+[ext_resource type="PackedScene" uid="uid://clt2f117kc2y7" path="res://assets/ship-large.glb" id="1_7sj1b"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7sj1b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_msvs6"]
+size = Vector3(2.7340698, 4.205078, 11.264778)
+
+[node name="ship-obst" type="Node3D" unique_id=1909559171]
+
+[node name="ship-large2" parent="." unique_id=212743379 instance=ExtResource("1_7sj1b")]
+transform = Transform3D(3.5863438, 0, 0, 0, 3.5863438, 0, 0, 0, 3.5863438, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1284916658]
+physics_material_override = SubResource("PhysicsMaterial_7sj1b")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1220066501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.06484985, 1.6025391, -0.7592964)
+shape = SubResource("BoxShape3D_msvs6")

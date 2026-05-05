@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://bebhmhdig0lcc"]
+
+[ext_resource type="Script" uid="uid://jmolyj8uexnm" path="res://scripts/notificatio_card.gd" id="1_xjkyk"]
+[ext_resource type="Texture2D" uid="uid://cyf3qy7qpkqm8" path="res://assets/notif-board.png" id="2_ed5ip"]
+
+[node name="NotificatioCard" type="Control" unique_id=1981480304]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_xjkyk")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1343397333]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 5.35
+anchor_top = 2.05
+anchor_right = 22.45
+anchor_bottom = 12.625
+mouse_filter = 2
+texture = ExtResource("2_ed5ip")
+stretch_mode = 5
+
+[node name="MessageLabel" type="Label" parent="." unique_id=1778560829]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 246.0
+offset_bottom = 50.0
+horizontal_alignment = 1
+
+[node name="OkButton" type="Button" parent="." unique_id=1527117784]
+z_index = 8
+layout_mode = 0
+offset_left = 495.0
+offset_top = 357.0
+offset_right = 613.0
+offset_bottom = 413.0
+action_mode = 0

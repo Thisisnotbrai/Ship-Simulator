@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://yihqjni21brm"]
+
+[ext_resource type="Script" uid="uid://bsumotpsqqmjh" path="res://main_menu.gd" id="1_mainmenu"]
+
+[node name="MainMenu" type="Control" unique_id=1932960368]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mainmenu")
+
+[node name="Background" type="ColorRect" parent="." unique_id=753481453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.118, 0.118, 0.176, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1475784991]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=352736184]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/PanelContainer" unique_id=1855973443]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer/MarginContainer" unique_id=1375337654]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1616552952]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "MY GAME"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1718923122]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "MAIN MENU"
+horizontal_alignment = 1
+
+[node name="Spacer" type="Control" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1029791343]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=668512229]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "PLAY"
+
+[node name="AchievementsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=597596628]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "ACHIEVEMENTS"
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=219434477]
+custom_minimum_size = Vector2(0, 58)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "SETTINGS"

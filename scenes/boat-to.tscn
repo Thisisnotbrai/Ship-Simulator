@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c6vkhpr5mdiaq"]
+
+[ext_resource type="PackedScene" uid="uid://dg41kwhupecma" path="res://scenes/boat_scene.tscn" id="2_7lnbv"]
+
+[node name="boat" type="Node3D" unique_id=650684533]
+
+[node name="RigidBody3D" parent="." unique_id=553192832 instance=ExtResource("2_7lnbv")]

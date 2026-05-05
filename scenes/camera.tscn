@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cipcb36qdc5rf"]
+
+[ext_resource type="Script" uid="uid://cglbtee8ijh0y" path="res://scripts/camera.gd" id="1_cvpoc"]
+
+[node name="Camera3D" type="Camera3D" unique_id=1256401210]
+fov = 110.25937
+script = ExtResource("1_cvpoc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=469627558]

@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://dpslochxp5dmn"]
+
+[ext_resource type="Script" uid="uid://chauymm0vjn6s" path="res://scripts/radar.gd" id="1_642q4"]
+[ext_resource type="Script" uid="uid://fjom5hstklk0" path="res://scripts/bridge_hud.gd" id="1_xh5gw"]
+[ext_resource type="Texture2D" uid="uid://cfrvtufcw5tsy" path="res://assets/image-removebg-preview.png" id="4_rtjqm"]
+[ext_resource type="Script" uid="uid://dhcv4ko3weg76" path="res://scripts/engine_telegraph.gd" id="5_rtjqm"]
+[ext_resource type="Script" uid="uid://badlibxodgal6" path="res://scripts/steering_wheel.gd" id="5_xh5gw"]
+
+[node name="bridge_hud" type="CanvasLayer" unique_id=49309290]
+script = ExtResource("1_xh5gw")
+
+[node name="Root" type="Control" parent="." unique_id=529856731]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomBar" type="Control" parent="Root" unique_id=1167011385]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PortIndicator" type="Panel" parent="Root/BottomBar" unique_id=13593149]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PortLabel" type="Label" parent="Root/BottomBar/PortIndicator" unique_id=1573799692]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SteeringWheel" type="TextureRect" parent="Root/BottomBar" unique_id=1143938972]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -617.5
+offset_top = -302.0
+offset_right = -214.5
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(100, 100)
+mouse_filter = 0
+texture = ExtResource("4_rtjqm")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("5_xh5gw")
+sensitivity = 0.5
+
+[node name="StbdIndicator" type="Panel" parent="Root/BottomBar" unique_id=2145462345]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StbdLabel" type="Label" parent="Root/BottomBar/StbdIndicator" unique_id=1791677148]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="LeftPanel" type="Control" parent="Root" unique_id=600437623]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RadarContainer" type="Control" parent="Root/LeftPanel" unique_id=2020545170]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Radar" type="Node2D" parent="Root/LeftPanel/RadarContainer" unique_id=966810133]
+position = Vector2(121, 107)
+script = ExtResource("1_642q4")
+
+[node name="TopBar" type="Control" parent="Root" unique_id=1894517886]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="HeadingLabel" type="Label" parent="Root/TopBar" unique_id=1556262202]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="CoordsLabel" type="Label" parent="Root/TopBar" unique_id=824880587]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="SpeedLabel" type="Label" parent="Root/TopBar" unique_id=944102208]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="RudderLabel" type="Label" parent="Root/TopBar" unique_id=433997839]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="EngineTelegraph" type="Control" parent="Root" unique_id=1742775178]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("5_rtjqm")

@@ -1,0 +1,204 @@
+[gd_scene format=3 uid="uid://dg41kwhupecma"]
+
+[ext_resource type="Script" uid="uid://dnxcydn3kw16v" path="res://scripts/boat_scene.gd" id="1_6ts8l"]
+[ext_resource type="PackedScene" uid="uid://cipcb36qdc5rf" path="res://scenes/camera.tscn" id="3_e123k"]
+[ext_resource type="PackedScene" uid="uid://dx4s4w3vgdktk" path="res://assets/cargo ship/cargo_ship.glb" id="4_n15ag"]
+[ext_resource type="Script" uid="uid://d0hlv6lvupbwj" path="res://scripts/camera_bridge.gd" id="4_n5712"]
+[ext_resource type="Script" uid="uid://bobk434sd3j1q" path="res://scripts/cam_stern.gd" id="5_n5712"]
+[ext_resource type="Script" uid="uid://bwmt5y7x7to57" path="res://scripts/cam_bow.gd" id="6_y8kdk"]
+[ext_resource type="PackedScene" uid="uid://fthj70lh54no" path="res://scenes/rain.tscn" id="7_6qocg"]
+[ext_resource type="AudioStream" uid="uid://c3l8qwfluskys" path="res://ship-horn.mp3" id="8_01rmy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6ts8l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ts8l"]
+size = Vector3(122.765915, 34.65824, 41)
+
+[sub_resource type="SphereMesh" id="SphereMesh_e123k"]
+
+[node name="RigidBody3D" type="RigidBody3D" unique_id=553192832 node_paths=PackedStringArray("hull_points", "cameras")]
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_6ts8l")
+linear_damp = 0.5
+angular_damp = 0.5
+script = ExtResource("1_6ts8l")
+hull_points = [NodePath("Hullpoint_Stern"), NodePath("Hullpoint_Bow"), NodePath("Hullpoint_Port"), NodePath("Hullpoint_StarBoard")]
+wave_count = 1
+wave_steepnesses = Array[float]([0.5])
+wave_amplitudes = Array[float]([1.0])
+wave_directions = Array[float]([45.0])
+wave_frequencies = Array[float]([0.3])
+wave_speeds = Array[float]([1.2])
+wave_phases = Array[float]([0.0])
+cameras = [NodePath("Node/Camera3D"), NodePath("Node/CamStern"), NodePath("Node/CamBow")]
+
+[node name="Sketchfab_Scene" parent="." unique_id=228684623 instance=ExtResource("4_n15ag")]
+transform = Transform3D(0.020007316, 0, -2.550164, 0, 1.0922666, 0, 1.0792887, 0, 0.047273643, 32.40546, -39.353905, 22.737473)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=250089738]
+transform = Transform3D(-0.07074788, 0, -2.0788684, 0, 2.620927, 0, 2.1137402, 0, -0.0695807, -5.2294006, 0, 23.394176)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=521485054]
+transform = Transform3D(-0.019686067, 0, 0.9998062, 0, 1, 0, -0.9998062, 0, -0.019686067, -0.07584429, 14.0315075, 21.845238)
+shape = SubResource("BoxShape3D_6ts8l")
+
+[node name="Node" type="Node3D" parent="." unique_id=1432838825]
+
+[node name="Camera3D" parent="Node" unique_id=1256401210 instance=ExtResource("3_e123k")]
+transform = Transform3D(-0.99616265, 0.013948667, -0.08640182, -0.0067855124, 0.97193724, 0.23514211, 0.08725706, 0.23482606, -0.96811306, -6.516565, 31.220152, -8.994352)
+fov = 122.58103
+script = ExtResource("4_n5712")
+
+[node name="CamStern" type="Camera3D" parent="Node" unique_id=1078142865]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 1, -2.0408983, 61.407246, -62.017197)
+script = ExtResource("5_n5712")
+
+[node name="CamBow" type="Camera3D" parent="Node" unique_id=709310498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038005352, 39.07303, 135.5188)
+script = ExtResource("6_y8kdk")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="." unique_id=46872048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5741234, -3.4608045, 39.232117, -28.94009)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 4.0
+scale_amount_max = 5.0
+
+[node name="Particles" type="Node3D" parent="." unique_id=1915353467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.434971, 2.9102154, -6.2029724)
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="Particles" unique_id=770566089]
+transform = Transform3D(1.2827821, 0, 0, 0, 1.1500379, 0, 0, 0, 1.391775, 10.355352, 0, -36.73215)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 4.0
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D3" type="CPUParticles3D" parent="Particles" unique_id=96622415]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.588196, 0, -35.623165)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D4" type="CPUParticles3D" parent="Particles" unique_id=1988159621]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.936842, 0, -36.43216)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D5" type="CPUParticles3D" parent="Particles" unique_id=1274799826]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.938889, 0, -36.43216)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D8" type="CPUParticles3D" parent="Particles" unique_id=434792975]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.018303, 0, -36.43216)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D9" type="CPUParticles3D" parent="Particles" unique_id=1866654194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.557598, 0, -36.43216)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D6" type="CPUParticles3D" parent="Particles" unique_id=82862123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.4745216, 0, -36.43216)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+
+[node name="CPUParticles3D7" type="CPUParticles3D" parent="Particles" unique_id=717655624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3061066, 0, -36.43216)
+amount = 30
+lifetime = 2.0
+mesh = SubResource("SphereMesh_e123k")
+direction = Vector3(1, 0, 0.1)
+spread = 20.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+scale_amount_min = 3.0
+scale_amount_max = 4.0
+
+[node name="GPUParticles3D" parent="." unique_id=2017734286 instance=ExtResource("7_6qocg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.2435164, 35.258358, -6.13836)
+visible = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=280297929]
+stream = ExtResource("8_01rmy")
+
+[node name="GPUParticles3D2" parent="." unique_id=89169136 instance=ExtResource("7_6qocg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3208485, 68.842575, -66.034706)
+visible = true
+amount = 50000
+
+[node name="GPUParticles3D3" parent="." unique_id=1803038278 instance=ExtResource("7_6qocg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.40168476, 42.709, 132.86977)
+visible = true
+amount = 50000
+
+[node name="Hullpoint_Stern" type="Marker3D" parent="." unique_id=429433441]
+
+[node name="Hullpoint_Bow" type="Marker3D" parent="." unique_id=1339985528]
+
+[node name="Hullpoint_Port" type="Marker3D" parent="." unique_id=1402903822]
+
+[node name="Hullpoint_StarBoard" type="Marker3D" parent="." unique_id=334842985]

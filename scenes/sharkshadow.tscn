@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cqb7ldwl6yu8b"]
+
+[sub_resource type="Gradient" id="Gradient_kwld3"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k7i1i"]
+gradient = SubResource("Gradient_kwld3")
+fill = 1
+fill_from = Vector2(0.46875, 0.45982143)
+fill_to = Vector2(1, 1)
+
+[node name="Sharkshadow" type="Node3D" unique_id=163797366]
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=763905372]
+billboard = 1
+texture = SubResource("GradientTexture2D_k7i1i")
